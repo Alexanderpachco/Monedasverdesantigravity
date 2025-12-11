@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Empresa - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <i class="ph-fill ph-plant"></i>
+                <span>Panel MV</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active" onclick="switchTab('overview')"><i class="ph-duotone ph-squares-four"></i>
+                    Resumen</a>
+                <a href="#" onclick="switchTab('social-impact')"><i class="ph-duotone ph-users-three"></i> Impacto
+                    Social</a>
+                <a href="#" onclick="switchTab('products')"><i class="ph-duotone ph-tag"></i> Productos</a>
+                <a href="#" onclick="switchTab('validations')"><i class="ph-duotone ph-check-circle"></i>
+                    Validaciones</a>
+                <a href="#" onclick="switchTab('missions')"><i class="ph-duotone ph-list-plus"></i> Crear Misión</a>
+                <a href="#" onclick="switchTab('settings')"><i class="ph-duotone ph-gear"></i> Configuración</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html"><i class="ph-duotone ph-sign-out"></i> Salir</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <h2>Bienvenido, EcoStore Ltda.</h2>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Eco+Store&background=2E7D32&color=fff" alt="Profile">
+                </div>
+            </header>
+
+            <!-- Tab: Social Impact -->
+            <div id="tab-social-impact" class="dashboard-tab">
+                <div class="section-title">
+                    <h3>Impacto Social & Ranking</h3>
+                    <p>Monitorea cómo la comunidad impulsa tu marca.</p>
+                </div>
+
+                <!-- Social Stats Row -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e3f2fd; color: #1565c0;"><i class="ph-thumbs-up"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="social-likes">1,240</h3>
+                            <p>Likes Totales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f3e5f5; color: #7b1fa2;"><i
+                                class="ph-share-network"></i></div>
+                        <div class="stat-info">
+                            <h3 id="social-shares">350</h3>
+                            <p>Compartidos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fff3e0; color: #ef6c00;"><i class="ph-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="social-score">1,540</h3>
+                            <p>Eco-Score Actual</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e8f5e9; color: #2e7d32;"><i class="ph-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="social-rank">#1</h3>
+                            <p>Ranking General</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid-2col">
+                    <!-- Ranking Widget -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h4>Tu Posición en el Ranking</h4>
+                            <span class="badge badge-success"><i class="ph-trend-up"></i> +2 esta semana</span>
+                        </div>
+                        <div class="ranking-visual">
+                            <div class="rank-bar-container">
+                                <div class="rank-bar" style="height: 100%; background: var(--primary-color);"
+                                    title="Tú: 1540 pts"></div>
+                                <span class="rank-label">Tú</span>
+                            </div>
+                            <div class="rank-bar-container">
+                                <div class="rank-bar" style="height: 80%; background: #ccc;"
+                                    title="Competencia A: 1250 pts"></div>
+                                <span class="rank-label">#2</span>
+                            </div>
+                            <div class="rank-bar-container">
+                                <div class="rank-bar" style="height: 60%; background: #ccc;"
+                                    title="Competencia B: 980 pts"></div>
+                                <span class="rank-label">#3</span>
+                            </div>
+                        </div>
+                        <p class="text-muted text-center mt-2">¡Eres la empresa más ecológica de la semana!</p>
+                    </div>
+
+                    <!-- Top Users -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h4>Embajadores Verdes</h4>
+                        </div>
+                        <ul class="top-users-list">
+                            <li>
+                                <img src="https://ui-avatars.com/api/?name=Maria+G&background=random" alt="User">
+                                <div>
+                                    <strong>Maria Gonzalez</strong>
+                                    <small>3 posts • 150 likes generados</small>
+                                </div>
+                                <span class="badge badge-primary">Top 1</span>
+                            </li>
+                            <li>
+                                <img src="https://ui-avatars.com/api/?name=Juan+P&background=random" alt="User">
+                                <div>
+                                    <strong>Juan Perez</strong>
+                                    <small>1 post • 45 likes generados</small>
+                                </div>
+                                <span class="badge badge-secondary">Top 2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Associated Posts Gallery -->
+                <div class="dashboard-section">
+                    <h3>Galería de la Comunidad</h3>
+                    <div class="gallery-grid" id="company-social-gallery">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph-duotone ph-ticket"></i></div>
+                    <div class="stat-info">
+                        <h3>128</h3>
+                        <p>Descuentos Redimidos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph-duotone ph-currency-dollar"></i></div>
+                    <div class="stat-info">
+                        <h3>$2.5M</h3>
+                        <p>Ventas Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph-duotone ph-users"></i></div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Nuevos Clientes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph-duotone ph-leaf"></i></div>
+                    <div class="stat-info">
+                        <h3>850kg</h3>
+                        <p>CO2 Ahorrado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity / Products -->
+            <div class="dashboard-section">
+                <div class="section-title">
+                    <h3>Gestión de Productos</h3>
+                    <button class="btn btn-primary btn-sm"><i class="ph-bold ph-plus"></i> Nuevo Producto</button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Descuento MV</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Camiseta Orgánica</td>
+                                <td>$50.000</td>
+                                <td>20% (100 MV)</td>
+                                <td><span class="status active">Activo</span></td>
+                                <td>
+                                    <button class="icon-btn"><i class="ph-bold ph-pencil"></i></button>
+                                    <button class="icon-btn"><i class="ph-bold ph-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Café Sostenible</td>
+                                <td>$20.000</td>
+                                <td>25% (50 MV)</td>
+                                <td><span class="status active">Activo</span></td>
+                                <td>
+                                    <button class="icon-btn"><i class="ph-bold ph-pencil"></i></button>
+                                    <button class="icon-btn"><i class="ph-bold ph-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Termo Reutilizable</td>
+                                <td>$35.000</td>
+                                <td>15% (35 MV)</td>
+                                <td><span class="status inactive">Inactivo</span></td>
+                                <td>
+                                    <button class="icon-btn"><i class="ph-bold ph-pencil"></i></button>
+                                    <button class="icon-btn"><i class="ph-bold ph-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Mission Creator -->
+            <div class="dashboard-section">
+                <div class="section-title">
+                    <h3>Crear Misión Ecológica</h3>
+                </div>
+                <form id="mission-creator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Título de la Misión</label>
+                            <input type="text" placeholder="Ej. Compra Sostenible" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select required>
+                                <option value="corporate">Empresarial</option>
+                                <option value="community">Comunitaria</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea rows="2" placeholder="Instrucciones para el usuario..." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Recompensa MV</label>
+                            <input type="number" value="1" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Recompensa EXP</label>
+                            <input type="number" value="50" min="10">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Publicar Misión</button>
+                </form>
+            </div>
+
+            <!-- Photo Validation -->
+            <div class="dashboard-section">
+                <div class="section-title">
+                    <h3>Validar Fotos de Usuarios</h3>
+                </div>
+                <div class="photos-grid">
+                    <div class="photo-card">
+                        <div class="photo-placeholder"><i class="ph-duotone ph-image"></i></div>
+                        <p>Usuario: Juan P.</p>
+                        <div class="photo-actions">
+                            <button class="btn btn-sm btn-primary"><i class="ph-bold ph-check"></i></button>
+                            <button class="btn btn-sm btn-outline"><i class="ph-bold ph-x"></i></button>
+                        </div>
+                    </div>
+                    <div class="photo-card">
+                        <div class="photo-placeholder"><i class="ph-duotone ph-image"></i></div>
+                        <p>Usuario: Maria L.</p>
+                        <div class="photo-actions">
+                            <button class="btn btn-sm btn-primary"><i class="ph-bold ph-check"></i></button>
+                            <button class="btn btn-sm btn-outline"><i class="ph-bold ph-x"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

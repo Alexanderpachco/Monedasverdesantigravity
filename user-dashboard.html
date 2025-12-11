@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Panel - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body class="dashboard-body">
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar user-sidebar">
+            <div class="sidebar-header">
+                <i class="ph-fill ph-plant"></i>
+                <span>Mi Espacio</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active" onclick="switchTab('tree')"><i class="ph-duotone ph-tree"></i> Mi Árbol</a>
+                <a href="#" onclick="switchTab('social')"><i class="ph-duotone ph-users"></i> Social</a>
+                <a href="#" onclick="switchTab('validation')"><i class="ph-duotone ph-camera"></i> Validación</a>
+                <a href="#" onclick="switchTab('missions')"><i class="ph-duotone ph-list-checks"></i> Misiones</a>
+                <a href="#" onclick="switchTab('wallet')"><i class="ph-duotone ph-wallet"></i> Wallet MV</a>
+                <a href="#" onclick="switchTab('referrals')"><i class="ph-duotone ph-users-three"></i> Referidos</a>
+                <a href="#" onclick="switchTab('profile')"><i class="ph-duotone ph-user-circle"></i> Perfil</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html"><i class="ph-duotone ph-sign-out"></i> Salir</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div class="header-welcome">
+                    <h2>Hola, <span id="user-name">Alex</span></h2>
+                    <p class="plan-badge" id="user-plan">Plan Gratis</p>
+                </div>
+                <div class="user-profile-mini">
+                    <div class="mv-balance-mini">
+                        <i class="ph-fill ph-coin-vertical"></i> <span id="header-balance">0</span> MV
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Alex+P&background=81C784&color=fff" alt="Profile">
+                </div>
+            </header>
+
+            <!-- Tab: Tree (Gamification) -->
+            <div id="tab-tree" class="dashboard-tab active">
+                <div class="tree-container">
+                    <div class="tree-visual">
+                        <!-- Tree SVG/Icon will be injected here based on level -->
+                        <div id="tree-icon-wrapper" class="tree-stage-seed">
+                            <i class="ph-fill ph-plant" id="main-tree-icon"></i>
+                        </div>
+                        <!-- Fruits Container -->
+                        <div id="fruits-container">
+                            <!-- Fruits injected via JS -->
+                        </div>
+                    </div>
+                    <div class="tree-stats">
+                        <div class="tree-stat">
+                            <h4>Nivel del Árbol</h4>
+                            <p id="tree-level-name">Semilla</p>
+                            <div class="exp-bar-container">
+                                <div class="exp-fill" id="exp-fill" style="width: 0%"></div>
+                            </div>
+                            <small id="exp-text">0 / 100 EXP</small>
+                        </div>
+                        <div class="tree-stat">
+                            <h4>Frutos (MV)</h4>
+                            <p id="tree-fruits-count">0</p>
+                        </div>
+                        <div class="tree-stat">
+                            <h4>Próxima Expiración</h4>
+                            <p id="next-expiration">--:--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <h3>Mis Logros</h3>
+                    <div class="badges-grid">
+                        <div class="badge-item locked" id="badge-first-fruit">
+                            <div class="badge-icon"><i class="ph-fill ph-apple-logo"></i></div>
+                            <span>Primer Fruto</span>
+                        </div>
+                        <div class="badge-item locked" id="badge-ranger">
+                            <div class="badge-icon"><i class="ph-fill ph-binoculars"></i></div>
+                            <span>Guardabosques</span>
+                        </div>
+                        <div class="badge-item locked" id="badge-sower">
+                            <div class="badge-icon"><i class="ph-fill ph-hand-heart"></i></div>
+                            <span>Sembrador</span>
+                        </div>
+                        <div class="badge-item locked" id="badge-cultivator">
+                            <div class="badge-icon"><i class="ph-fill ph-currency-dollar"></i></div>
+                            <span>Cultivador</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Social Feed -->
+            <div id="tab-social" class="dashboard-tab">
+                <div class="section-title">
+                    <h3>Comunidad Verde</h3>
+                    <p>Interactúa y gana recompensas (Likes = EXP, Shares = MV).</p>
+                </div>
+
+                <div class="create-post-box">
+                    <textarea placeholder="¿Qué hiciste por el planeta hoy?"></textarea>
+                    <div class="post-tools">
+                        <button class="btn-icon"><i class="ph-image"></i></button>
+                        <button class="btn btn-primary btn-sm">Publicar</button>
+                    </div>
+                </div>
+
+                <div id="social-feed-container">
+                    <!-- Posts injected by JS -->
+                </div>
+            </div>
+
+            <!-- Tab: Weekly Validation -->
+            <div id="tab-validation" class="dashboard-tab">
+                <div class="section-title">
+                    <h3>Validación Semanal</h3>
+                    <p>Sube una foto/video en el local para habilitar pagos MV. <span id="validation-limit-info"></span>
+                    </p>
+                </div>
+
+                <div class="validation-container">
+                    <!-- Upload Card -->
+                    <div class="validation-card upload-card">
+                        <h4>Nueva Validación</h4>
+                        <form id="validation-form">
+                            <div class="form-group">
+                                <label>Selecciona Empresa</label>
+                                <select id="validation-company-select" required>
+                                    <option value="">-- Elige un local --</option>
+                                    <option value="1">EcoStore Ltda.</option>
+                                    <option value="2">Green Café</option>
+                                    <option value="3">BiciTaller Pro</option>
+                                </select>
+                            </div>
+                            <div class="file-upload-area" id="validation-dropzone">
+                                <i class="ph-duotone ph-camera"></i>
+                                <p>Toca para subir foto/video</p>
+                                <input type="file" id="validation-file" accept="image/*,video/*" required>
+                            </div>
+                            <div id="validation-preview"></div>
+                            <button type="submit" class="btn btn-primary btn-block" id="btn-validate">Validar
+                                Evidencia</button>
+                        </form>
+                    </div>
+
+                    <!-- Status List -->
+                    <div class="validation-status-section">
+                        <h4>Mis Tokens Activos</h4>
+                        <div id="active-tokens-list" class="tokens-list">
+                            <!-- Injected by JS -->
+                            <div class="empty-state">No tienes empresas habilitadas esta semana.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Missions -->
+            <div id="tab-missions" class="dashboard-tab">
+                <div class="section-title">
+                    <h3>Misiones Ecológicas</h3>
+                    <p>Completa misiones para ganar frutos (MV) y EXP.</p>
+                </div>
+
+                <div class="mission-filters">
+                    <button class="mission-filter active" onclick="filterMissions('all')">Todas</button>
+                    <button class="mission-filter" onclick="filterMissions('personal')">Personales</button>
+                    <button class="mission-filter" onclick="filterMissions('corporate')">Empresariales</button>
+                    <button class="mission-filter" onclick="filterMissions('community')">Comunitarias</button>
+                </div>
+
+                <div class="missions-grid">
+                    <!-- Missions injected by JS -->
+                </div>
+            </div>
+
+            <!-- Tab: Wallet -->
+            <div id="tab-wallet" class="dashboard-tab">
+                <div class="wallet-grid">
+                    <!-- Main Balance -->
+                    <div class="wallet-overview">
+                        <div class="balance-big">
+                            <span id="wallet-balance">0</span> <small>MV</small>
+                        </div>
+                        <div class="wallet-details">
+                            <p>Valor actual: <span id="mv-value">$20</span> COP / MV</p>
+                            <p>Vigencia base: <span id="mv-validity">24</span> horas</p>
+                        </div>
+                    </div>
+
+                    <!-- Quotation Widget -->
+                    <div class="quotation-widget">
+                        <div class="quote-header">
+                            <h4>Cotización MV</h4>
+                            <span class="live-badge">En vivo</span>
+                        </div>
+                        <div class="quote-main-value" id="quote-value-display">$20 COP</div>
+                        <div class="quote-breakdown">
+                            <div class="quote-item">
+                                <span>Base</span>
+                                <strong>$20</strong>
+                            </div>
+                            <div class="quote-item">
+                                <span>Plan</span>
+                                <strong id="quote-plan-mult">x1</strong>
+                            </div>
+                            <div class="quote-item">
+                                <span>Nivel <small id="quote-level-scale">(1)</small></span>
+                                <strong id="quote-level-bonus" class="positive">+0%</strong>
+                            </div>
+                            <div class="quote-item">
+                                <span>Actividad</span>
+                                <strong id="quote-activity-bonus" class="positive">+0%</strong>
+                            </div>
+                        </div>
+                        <div class="quote-footer">
+                            <small>¡Completa misiones para subir el valor!</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h3>Historial de Transacciones</h3>
+                    <table class="wallet-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="wallet-history">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab: Referrals -->
+            <div id="tab-referrals" class="dashboard-tab">
+                <div class="referral-hero">
+                    <h3>Invita amigos y haz crecer tu árbol</h3>
+                    <p>Referidos Gratis: +24h vigencia de frutos.<br>Referidos Pagos: +Valor MV y Nivel de Árbol.</p>
+                    <div class="referral-link-box">
+                        <input type="text" value="monedasverdes.com/ref/alex123" readonly id="ref-link">
+                        <button class="btn btn-primary" onclick="copyRefLink()">Copiar</button>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="ph-duotone ph-users"></i></div>
+                        <div class="stat-info">
+                            <h3 id="ref-count-free">0</h3>
+                            <p>Referidos Gratis</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="ph-duotone ph-star"></i></div>
+                        <div class="stat-info">
+                            <h3 id="ref-count-paid">0</h3>
+                            <p>Referidos Pagos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Profile -->
+            <div id="tab-profile" class="dashboard-tab">
+                <div class="profile-form-container">
+                    <h3>Mi Perfil</h3>
+                    <form id="user-profile-form">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" value="Alexander Pachco" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="alex@example.com" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input type="text" value="Bogotá">
+                        </div>
+                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Evidence Modal -->
+    <div id="evidence-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEvidenceModal()">&times;</span>
+            <h3 id="modal-mission-title">Subir Evidencia</h3>
+            <p>Sube una foto o video para validar tu misión.</p>
+            <div class="file-upload">
+                <i class="ph-duotone ph-upload-simple"></i>
+                <p>Arrastra tu archivo aquí</p>
+                <input type="file" id="evidence-file">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="submitEvidence()">Enviar
+                para Revisión</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

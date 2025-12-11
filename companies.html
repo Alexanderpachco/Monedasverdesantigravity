@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <i class="ph-fill ph-plant"></i>
+                    <span>Monedas Verdes</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="#plans">Planes</a></li>
+                    <li><a href="map.html">Mapa</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="dashboard.html" class="btn btn-outline">Login Empresa</a>
+                <a href="register-company.html" class="btn btn-primary">Registrar mi Empresa</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="companies-hero">
+        <div class="container hero-content">
+            <div class="text-content">
+                <h1>Empresas Verdes: <br> <span class="highlight">Multiplica tu impacto y tus ventas</span></h1>
+                <p class="subtitle">Promociona tus productos con descuentos híbridos y obtén exposición garantizada en
+                    redes sociales.</p>
+                <div class="cta-group">
+                    <a href="register-company.html" class="btn btn-primary btn-lg">Registrar mi Empresa</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="ph-duotone ph-storefront"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué unirte a Monedas Verdes?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="ph-duotone ph-chart-line-up"></i>
+                    <h3>Más Ventas</h3>
+                    <p>Atrae clientes con descuentos inteligentes.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="ph-duotone ph-share-network"></i>
+                    <h3>Publicidad Viral</h3>
+                    <p>Exposición orgánica con fotos de usuarios.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="ph-duotone ph-medal"></i>
+                    <h3>Reputación Verde</h3>
+                    <p>Certifica tu compromiso ambiental.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="ph-duotone ph-users"></i>
+                    <h3>Clientes Eco</h3>
+                    <p>Conecta con una comunidad consciente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ranking Section -->
+    <section class="ranking-section">
+        <div class="container">
+            <h2 class="section-title">Top Empresas Ecológicas 🏆</h2>
+            <p class="section-subtitle">Las empresas con mayor impacto y valoración de la comunidad.</p>
+
+            <div class="ranking-table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Empresa</th>
+                            <th>Eco-Score</th>
+                            <th>Categoría</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="company-ranking-body">
+                        <!-- Injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planes de Suscripción</h2>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">Gratis</div>
+                    <ul>
+                        <li>10 productos verdes</li>
+                        <li>Soporte por correo</li>
+                        <li>Dashboard básico</li>
+                    </ul>
+                    <a href="register-company.html" class="btn btn-outline">Elegir</a>
+                </div>
+                <!-- Pro Plan -->
+                <div class="pricing-card popular">
+                    <div class="badge">Recomendado</div>
+                    <h3>Pro</h3>
+                    <div class="price">$29/mes</div>
+                    <ul>
+                        <li>50 productos</li>
+                        <li>Mayor visibilidad</li>
+                        <li>Estadísticas avanzadas</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="register-company.html" class="btn btn-primary">Elegir</a>
+                </div>
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$99/mes</div>
+                    <ul>
+                        <li>Productos ilimitados</li>
+                        <li>Videomarketing</li>
+                        <li>Reportes de impacto</li>
+                        <li>Consultoría verde</li>
+                    </ul>
+                    <a href="register-company.html" class="btn btn-outline">Elegir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <div class="logo">Monedas Verdes</div>
+                <p>Transformando negocios en agentes de cambio.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Soporte Empresas</a></li>
+                    <li><a href="#">Guía de Uso</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Monedas Verdes. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

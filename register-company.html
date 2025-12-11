@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Empresa - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body class="wizard-body">
+
+    <div class="wizard-container">
+        <div class="wizard-header">
+            <a href="index.html" class="wizard-logo">
+                <i class="ph-fill ph-plant"></i> Monedas Verdes
+            </a>
+            <h2>Registro Empresarial</h2>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="wizard-progress">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="3">3</div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="4">4</div>
+        </div>
+
+        <form id="company-register-form">
+            <!-- Step 1: Info General -->
+            <div class="wizard-step active" id="step-1">
+                <h3>Información General</h3>
+                <div class="form-group">
+                    <label>Nombre de la Empresa</label>
+                    <input type="text" placeholder="Ej. EcoStore Ltda." required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Empresa</label>
+                    <select required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="productos">Productos físicos</option>
+                        <option value="servicios">Servicios</option>
+                        <option value="alimentos">Alimentos y bebidas</option>
+                        <option value="moda">Moda</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="salud">Salud y bienestar</option>
+                        <option value="educacion">Educación</option>
+                        <option value="sostenibilidad">Sostenibilidad</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>NIT / Identificación Legal</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>País</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ciudad</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+                <div class="wizard-buttons">
+                    <button type="button" class="btn btn-primary" onclick="nextStep(1)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Productos -->
+            <div class="wizard-step" id="step-2">
+                <h3>Productos y Descuentos</h3>
+                <div class="form-group">
+                    <label>¿Qué ofreces? (Tags)</label>
+                    <input type="text" placeholder="Ej. Zapatos, Café, Asesoría">
+                </div>
+                <div class="form-group">
+                    <label>Catálogo (Imágenes)</label>
+                    <div class="file-upload">
+                        <i class="ph-duotone ph-upload-simple"></i>
+                        <p>Arrastra o selecciona imágenes</p>
+                        <input type="file" multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descuento en MV (5% - 40%)</label>
+                    <input type="range" min="5" max="40" value="10" oninput="updateRangeVal(this, 'discount-val')">
+                    <span id="discount-val">10%</span>
+                </div>
+                <div class="form-group">
+                    <label>Split de Pago (Dinero / MV)</label>
+                    <div class="split-slider">
+                        <span>Dinero</span>
+                        <input type="range" min="0" max="100" value="70">
+                        <span>MV</span>
+                    </div>
+                </div>
+                <div class="wizard-buttons">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(2)">Atrás</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Perfil Ambiental -->
+            <div class="wizard-step" id="step-3">
+                <h3>Perfil Ambiental</h3>
+                <div class="form-group">
+                    <label>Acciones Ecológicas</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Reciclaje</label>
+                        <label><input type="checkbox"> Materiales Sostenibles</label>
+                        <label><input type="checkbox"> Compensación CO2</label>
+                        <label><input type="checkbox"> Energías Limpias</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Describe tu aporte ambiental</label>
+                    <textarea rows="4" placeholder="Cuéntanos cómo ayudas al planeta..."></textarea>
+                </div>
+                <div class="wizard-buttons">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(3)">Atrás</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Configuración -->
+            <div class="wizard-step" id="step-4">
+                <h3>Configuración Final</h3>
+                <div class="form-group">
+                    <label>Horario de Atención</label>
+                    <input type="text" placeholder="Ej. Lun-Vie 9am - 6pm">
+                </div>
+                <div class="form-group">
+                    <label>Redes Sociales</label>
+                    <input type="text" placeholder="Instagram URL">
+                    <input type="text" placeholder="Facebook URL" style="margin-top: 10px;">
+                </div>
+                <div class="form-group">
+                    <label class="terms-label">
+                        <input type="checkbox" required> Acepto los <a href="#">Términos y Condiciones</a>
+                    </label>
+                </div>
+                <div class="wizard-buttons">
+                    <button type="button" class="btn btn-outline" onclick="prevStep(4)">Atrás</button>
+                    <button type="button" class="btn btn-primary" onclick="submitCompanyForm()">Crear Registro</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
