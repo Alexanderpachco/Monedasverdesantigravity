@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoStore Ltda. - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <i class="ph-fill ph-plant"></i>
+                    <span>Monedas Verdes</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="map.html">Mapa</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="dashboard.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Header -->
+    <section class="profile-header">
+        <div class="container">
+            <div class="profile-info">
+                <div class="profile-logo">
+                    <i class="ph-duotone ph-storefront"></i>
+                </div>
+                <div class="profile-details">
+                    <h1>EcoStore Ltda.</h1>
+                    <div class="rating">
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star"></i>
+                        <i class="ph-fill ph-star-half"></i>
+                        <span>(4.5)</span>
+                    </div>
+                    <p class="location"><i class="ph-duotone ph-map-pin"></i> Bogotá, Colombia</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Sidebar Info -->
+                <aside class="profile-sidebar">
+                    <div class="card">
+                        <h3>Sobre Nosotros</h3>
+                        <p>Somos una tienda dedicada a productos 100% ecológicos y sostenibles. Apoyamos a productores
+                            locales.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Acciones Verdes</h3>
+                        <ul class="green-actions">
+                            <li><i class="ph-fill ph-recycle"></i> Reciclaje Activo</li>
+                            <li><i class="ph-fill ph-sun"></i> Energía Solar</li>
+                            <li><i class="ph-fill ph-package"></i> Empaques 0 Plástico</li>
+                        </ul>
+                    </div>
+                    <div class="card map-card">
+                        <h3>Ubicación</h3>
+                        <div class="mini-map">
+                            <!-- Placeholder -->
+                            <i class="ph-duotone ph-map-trifold"></i>
+                        </div>
+                        <a href="map.html" class="btn btn-sm btn-outline" style="width: 100%; margin-top: 10px;">Ver en
+                            Mapa</a>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <main class="products-section">
+                    <h2>Productos con Descuento MV</h2>
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="ph-duotone ph-t-shirt"></i>
+                            </div>
+                            <div class="product-info">
+                                <h4>Camiseta Orgánica</h4>
+                                <div class="price-row">
+                                    <span class="original-price">$50.000</span>
+                                    <span class="discount-price">$40.000</span>
+                                </div>
+                                <div class="payment-split">
+                                    <div class="split-item">
+                                        <i class="ph-fill ph-money"></i> $30.000
+                                    </div>
+                                    <div class="split-item green">
+                                        <i class="ph-fill ph-coin-vertical"></i> 100 MV
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Obtener Descuento</button>
+                            </div>
+                        </div>
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="ph-duotone ph-coffee"></i>
+                            </div>
+                            <div class="product-info">
+                                <h4>Café Sostenible</h4>
+                                <div class="price-row">
+                                    <span class="original-price">$20.000</span>
+                                    <span class="discount-price">$15.000</span>
+                                </div>
+                                <div class="payment-split">
+                                    <div class="split-item">
+                                        <i class="ph-fill ph-money"></i> $10.000
+                                    </div>
+                                    <div class="split-item green">
+                                        <i class="ph-fill ph-coin-vertical"></i> 50 MV
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Obtener Descuento</button>
+                            </div>
+                        </div>
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <i class="ph-duotone ph-sneaker"></i>
+                            </div>
+                            <div class="product-info">
+                                <h4>Zapatillas Eco</h4>
+                                <div class="price-row">
+                                    <span class="original-price">$120.000</span>
+                                    <span class="discount-price">$100.000</span>
+                                </div>
+                                <div class="payment-split">
+                                    <div class="split-item">
+                                        <i class="ph-fill ph-money"></i> $80.000
+                                    </div>
+                                    <div class="split-item green">
+                                        <i class="ph-fill ph-coin-vertical"></i> 200 MV
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-sm">Obtener Descuento</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <div class="logo">Monedas Verdes</div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Monedas Verdes.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

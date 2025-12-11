@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monedas Verdes | Descuentos que crean impacto</title>
+    <meta name="description"
+        content="Plataforma donde las empresas ofrecen descuentos por acciones ecológicas. Únete al movimiento verde.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons (Phosphor Icons for clean eco look) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <i class="ph-fill ph-plant"></i>
+                <span>Monedas Verdes</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Qué es</a></li>
+                    <li><a href="companies.html">Empresas</a></li>
+                    <li><a href="map.html">Mapa</a></li>
+                    <li><a href="user-dashboard.html">Mi Billetera</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="user-dashboard.html" class="btn btn-outline">Login</a>
+                <a href="register-company.html" class="btn btn-primary">Registro</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="text-content">
+                <h1>Monedas Verdes: <br> <span class="highlight">Descuentos que crean impacto</span></h1>
+                <p class="subtitle">Compra con responsabilidad, apoya al planeta y obtén beneficios exclusivos.</p>
+                <div class="cta-group">
+                    <a href="register-company.html" class="btn btn-primary">Soy Empresa</a>
+                    <a href="user-dashboard.html" class="btn btn-secondary">Soy Usuario</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for illustration -->
+                <div class="image-placeholder">
+                    <i class="ph-duotone ph-globe-hemisphere-west"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Qué es Monedas Verdes?</h2>
+                <p>Una plataforma donde tus acciones ecológicas se convierten en valor real.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Monedas Verdes es una plataforma donde las empresas ofrecen descuentos que los usuarios pueden
+                        pagar en parte con dinero y en parte con <strong>Monedas Verdes (MV)</strong>.</p>
+                    <p>Para redimir el beneficio, debes cumplir misiones como reciclar, caminar, usar bicicleta o
+                        sembrar árboles. ¡Cada compra es impacto ambiental!</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="ph-duotone ph-shopping-bag"></i>
+                        <h3>Consumo Responsable</h3>
+                    </div>
+                    <div class="feature-card">
+                        <i class="ph-duotone ph-megaphone"></i>
+                        <h3>Marketing Viral</h3>
+                    </div>
+                    <div class="feature-card">
+                        <i class="ph-duotone ph-leaf"></i>
+                        <h3>Impacto Ambiental</h3>
+                    </div>
+                    <div class="feature-card">
+                        <i class="ph-duotone ph-users-three"></i>
+                        <h3>Comunidad Verde</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cómo funciona</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon"><i class="ph-duotone ph-tag"></i></div>
+                    <h3>1. Elige</h3>
+                    <p>Busca un producto con descuento verde.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="ph-duotone ph-coins"></i></div>
+                    <h3>2. Paga</h3>
+                    <p>Usa dinero + tus Monedas Verdes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="ph-duotone ph-camera"></i></div>
+                    <h3>3. Comparte</h3>
+                    <p>Sube tu foto con #MonedaVerde.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="ph-duotone ph-smiley"></i></div>
+                    <h3>4. Disfruta</h3>
+                    <p>Recibe tu producto y ayuda al planeta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <div class="benefits-wrapper">
+                <div class="benefits-column companies">
+                    <h3>Para Empresas</h3>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i> Marketing viral garantizado</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Incremento de ventas</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Mejor reputación verde</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Nuevos clientes eco-conscientes</li>
+                    </ul>
+                </div>
+                <div class="benefits-column users">
+                    <h3>Para Usuarios</h3>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i> Descuentos exclusivos</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Apoyo a causas ambientales</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Comunidad verde</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Experiencia gamificada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planes para Empresas</h2>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Básico</h3>
+                    <div class="price">Gratis</div>
+                    <ul>
+                        <li>10 productos verdes</li>
+                        <li>Soporte por correo</li>
+                        <li>Dashboard básico</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Elegir</a>
+                </div>
+                <!-- Pro Plan -->
+                <div class="pricing-card popular">
+                    <div class="badge">Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">$29/mes</div>
+                    <ul>
+                        <li>50 productos</li>
+                        <li>Mayor visibilidad</li>
+                        <li>Estadísticas avanzadas</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Elegir</a>
+                </div>
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$99/mes</div>
+                    <ul>
+                        <li>Productos ilimitados</li>
+                        <li>Videomarketing</li>
+                        <li>Reportes de impacto</li>
+                        <li>Consultoría verde</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Elegir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallet Section (Interactive) -->
+    <section id="wallet">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tu Billetera Verde</h2>
+                <p>Gana monedas por tus acciones.</p>
+            </div>
+            <div class="wallet-dashboard">
+                <div class="balance-card">
+                    <h3>Saldo Actual</h3>
+                    <div class="balance-amount">
+                        <i class="ph-fill ph-coin-vertical"></i>
+                        <span id="mv-balance">0</span> MV
+                    </div>
+                </div>
+                <div class="actions-grid">
+                    <div class="action-card" onclick="addPoints('recycle')">
+                        <i class="ph-duotone ph-recycle"></i>
+                        <h4>Reciclar</h4>
+                        <p>+10 MV por 10 botellas</p>
+                        <button class="btn btn-sm">Reclamar</button>
+                    </div>
+                    <div class="action-card" onclick="addPoints('walk')">
+                        <i class="ph-duotone ph-person-simple-walk"></i>
+                        <h4>Caminar/Bici</h4>
+                        <p>+10 MV por km</p>
+                        <button class="btn btn-sm">Iniciar</button>
+                    </div>
+                    <div class="action-card" onclick="addPoints('plant')">
+                        <i class="ph-duotone ph-tree"></i>
+                        <h4>Sembrar</h4>
+                        <p>+10 MV por árbol</p>
+                        <button class="btn btn-sm">Registrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Empresas Cercanas</h2>
+            </div>
+            <div id="map-container">
+                <a href="map.html"
+                    style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">
+                    <div class="map-placeholder">
+                        <i class="ph-duotone ph-map-pin"></i>
+                        <p>Ver Mapa Interactivo Completo</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <blockquote>
+                "Gracias a Monedas Verdes aumentamos nuestras ventas y ahora somos una marca verde de verdad."
+                <cite>- EcoStore Ltda.</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="cta">
+        <div class="container">
+            <h2>Únete al movimiento verde hoy</h2>
+            <div class="cta-group">
+                <a href="register-company.html" class="btn btn-primary btn-lg">Registrarme como Empresa</a>
+                <a href="user-dashboard.html" class="btn btn-secondary btn-lg">Registrarme como Usuario</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col">
+                <div class="logo">Monedas Verdes</div>
+                <p>Transformando hábitos en beneficios.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Mapa del Sitio</h4>
+                <ul>
+                    <li><a href="dashboard.html">Panel Empresa</a></li>
+                    <li><a href="company-profile.html">Perfil Empresa</a></li>
+                    <li><a href="public-profile.html">Perfil Público</a></li>
+                    <li><a href="companies.html">Lista Empresas</a></li>
+                    <li><a href="register-company.html">Registro</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-twitter-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Monedas Verdes. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

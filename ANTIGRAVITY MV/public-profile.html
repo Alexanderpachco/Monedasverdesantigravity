@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Público - Monedas Verdes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+</head>
+
+<body class="public-profile-body">
+
+    <header class="main-header">
+        <div class="logo-container">
+            <i class="ph-fill ph-plant logo-icon"></i>
+            <span class="logo-text">Monedas Verdes</span>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Inicio</a>
+            <a href="companies.html">Empresas</a>
+            <a href="map.html">Mapa</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="user-dashboard.html" class="btn btn-primary">Mi Dashboard</a>
+        </div>
+    </header>
+
+    <div class="profile-hero">
+        <div class="profile-card-large">
+            <div class="profile-header-info">
+                <img src="https://ui-avatars.com/api/?name=Maria+G&background=random" alt="User"
+                    class="profile-avatar-large">
+                <div class="profile-text">
+                    <h1>Maria Gonzalez</h1>
+                    <p class="user-handle">@mariag_eco</p>
+                    <div class="profile-badges">
+                        <span class="badge-level"><i class="ph-fill ph-tree"></i> Árbol Maduro</span>
+                        <span class="badge-plan">Plan Silver</span>
+                    </div>
+                </div>
+                <button class="btn btn-outline" id="btn-follow" onclick="toggleFollow()">Seguir</button>
+            </div>
+
+            <div class="profile-stats-row">
+                <div class="stat-box">
+                    <h3>1,250</h3>
+                    <p>EXP Total</p>
+                </div>
+                <div class="stat-box">
+                    <h3>450</h3>
+                    <p>MV Generadas</p>
+                </div>
+                <div class="stat-box">
+                    <h3>12</h3>
+                    <p>Empresas Habilitadas</p>
+                </div>
+                <div class="stat-box">
+                    <h3>340</h3>
+                    <p>Seguidores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content-grid">
+        <!-- Main Feed -->
+        <div class="feed-section">
+            <h2>Actividad Reciente</h2>
+            <div id="public-feed-container">
+                <!-- Posts injected by JS -->
+            </div>
+        </div>
+
+        <!-- Sidebar Info -->
+        <aside class="profile-sidebar">
+            <div class="sidebar-widget">
+                <h3>Insignias</h3>
+                <div class="badges-grid-mini">
+                    <div class="badge-mini" title="Primer Fruto"><i class="ph-fill ph-apple-logo"></i></div>
+                    <div class="badge-mini" title="Guardabosques"><i class="ph-fill ph-binoculars"></i></div>
+                    <div class="badge-mini" title="Influencer Verde"><i class="ph-fill ph-megaphone"></i></div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Empresas Favoritas</h3>
+                <ul class="favorite-companies-list">
+                    <li><i class="ph-fill ph-storefront"></i> EcoStore Ltda.</li>
+                    <li><i class="ph-fill ph-coffee"></i> Green Café</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple script for this page specific logic
+        function toggleFollow() {
+            const btn = document.getElementById('btn-follow');
+            if (btn.textContent === 'Seguir') {
+                btn.textContent = 'Siguiendo';
+                btn.classList.add('active');
+            } else {
+                btn.textContent = 'Seguir';
+                btn.classList.remove('active');
+            }
+        }
+
+        // Load mock posts
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPublicFeed();
+        });
+
+        function renderPublicFeed() {
+            const container = document.getElementById('public-feed-container');
+            const posts = [
+                {
+                    user: 'Maria Gonzalez', handle: '@mariag_eco', time: '2h',
+                    content: '¡Increíble visita a EcoStore! Compré productos sin plástico y gané mis MV semanales. 🌿 #VidaSostenible',
+                    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
+                    likes: 45, comments: 12
+                },
+                {
+                    user: 'Maria Gonzalez', handle: '@mariag_eco', time: '1d',
+                    content: 'Plantando mi tercer árbol del mes. ¡El bosque crece! 🌳',
+                    image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=800&q=80',
+                    likes: 120, comments: 34
+                }
+            ];
+
+            posts.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'social-post-card';
+                card.innerHTML = `
+                    <div class="post-header">
+                        <img src="https://ui-avatars.com/api/?name=Maria+G&background=random" alt="User">
+                        <div class="post-info">
+                            <h4>${post.user} <span>${post.handle} • ${post.time}</span></h4>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.content}</p>
+                        ${post.image ? `<img src="${post.image}" alt="Post Image" class="post-image">` : ''}
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="ph-heart"></i> ${post.likes}</button>
+                        <button class="action-btn"><i class="ph-chat-circle"></i> ${post.comments}</button>
+                        <button class="action-btn"><i class="ph-share-fat"></i> Compartir</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+
+</html>
